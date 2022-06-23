@@ -7,6 +7,7 @@ import board
 from digitalio import DigitalInOut, Direction, Pull
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.consumer_control import ConsumerControl
 from adafruit_hid.consumer_control_code import ConsumerControlCode
@@ -19,6 +20,7 @@ led.value = True
 
 kbd = Keyboard(usb_hid.devices)
 cc = ConsumerControl(usb_hid.devices)
+layout = KeyboardLayoutUS(kbd)
 
 # List of pins to use (
 pins = [
@@ -42,6 +44,17 @@ pins = [
 
 MEDIA = 1
 KEY = 2
+FUNC = 3
+
+def loginSequence():
+    layout.write('!!!!! USERNAME HERE !!!!!')
+    time.sleep(0.1)  # Seconds
+    kbd.press(Keycode.TAB)
+    time.sleep(0.1)  # Seconds
+    layout.write('!!!!! PASSWORD HERE !!!!!')
+    time.sleep(0.1)  # Seconds
+    kbd.press(Keycode.ENTER)
+    # TODO: Do I need the time.sleep calls?
 
 keymap = {
     (0):  (KEY, (Keycode.CONTROL, Keycode.ALT, Keycode.DELETE)),
@@ -49,7 +62,7 @@ keymap = {
     (2):  (MEDIA, ConsumerControlCode.VOLUME_DECREMENT),
     (3):  (MEDIA, ConsumerControlCode.VOLUME_INCREMENT),
 
-    (4):  (KEY, [Keycode.A]),
+    (4):  (FUNC, loginSequence),
     (5):  (KEY, [Keycode.B]),
     (6):  (KEY, [Keycode.C]),
     (7):  (KEY, [Keycode.D]),
@@ -59,10 +72,10 @@ keymap = {
     (10): (KEY, [Keycode.G]),
     (11): (KEY, [Keycode.H]),
 
-    (12): (KEY, [Keycode.I]),
-    (13): (KEY, [Keycode.J]),
-    (14): (KEY, [Keycode.K]),
-    (15): (KEY, [Keycode.L]),
+    (12): (FUNC, lambda: layout.write('Hello world')),
+    (13): (FUNC, lambda: layout.write('Hello world')),
+    (14): (FUNC, lambda: layout.write('Hello world')),
+    (15): (FUNC, lambda: layout.write('Hello world')),
 }
 
 switches = [
@@ -86,6 +99,8 @@ while True:
                 try:
                     if keymap[button][0] == KEY:
                         kbd.press(*keymap[button][1])
+                    elif keymap[button][0] == FUNC:
+                        keymap[button][1]()
                     else:
                         cc.send(keymap[button][1])
                 except ValueError:  # deals w six key limit
@@ -101,5 +116,5 @@ while True:
                     pass
                 switch_state[button] = 0
 
-    led.value = not led.value
+    led.value = not led.value  # TODO: Get LED flashing at a sensible rate... right now it blinks so fast that it just looks constantly on
     time.sleep(0.01)  # debounce
