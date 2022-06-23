@@ -1,0 +1,84 @@
+{
+  "uuid": "730cf686232946d913bdc292eefd3a6d",
+  "path": "Offline/PicoKeys",
+  "name": "PicoKeys",
+  "content": "",
+  "created_at": "2022-06-14 17:11:07",
+  "updated_at": "2022-06-14 18:18:52",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "f312d0bfb955a9dfce537baebf0e282b",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "40dd4b40117368097b7f949ac5f925f4",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "5f9451a0a0ba472ebbafe110fd9b3732": 1,
+        "aa5a9ff6351c4442a32cb82ba932498c": 16
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "RPI PICO DEV BOARD",
+          1,
+          "RPI_PICO_SMD_TH",
+          "DEV1",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "41ff9244bce146a6a6dcd79c79d59a1f",
+            "uuid": "5f9451a0a0ba472ebbafe110fd9b3732"
+          }
+        ],
+        [
+          "MX1A-E1NW",
+          16,
+          "SW_MX1A-E1NW_CHY",
+          "SW1,SW2,SW3,SW4,SW5,SW6,SW7,SW8,SW9,SW10,SW11,SW12,SW13,SW14,SW15,SW16",
+          {
+            "BOM_Manufacturer Part": "",
+            "puuid": "aa2ab5737fca41648aab077ad05859fe",
+            "uuid": "aa5a9ff6351c4442a32cb82ba932498c"
+          }
+        ]
+      ],
+      "updateTime": 1655194732,
+      "createTime": 1655190668,
+      "histories": [],
+      "created_at": "2022-06-14 17:11:08",
+      "updated_at": "2022-06-14 18:18:52"
+    },
+    {
+      "uuid": "c2bda9d38c3767481fa7e834b8c45a3c",
+      "puuid": "730cf686232946d913bdc292eefd3a6d",
+      "title": "PCB_PicoKeys",
+      "filename": "PCB_PicoKeys.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "41ff9244bce146a6a6dcd79c79d59a1f": 1,
+        "aa2ab5737fca41648aab077ad05859fe": 16
+      },
+      "BOM": [],
+      "updateTime": 1655194354,
+      "createTime": 1655191601,
+      "histories": [],
+      "created_at": "2022-06-14 17:26:41",
+      "updated_at": "2022-06-14 18:12:34"
+    }
+  ],
+  "sort": [],
+  "title": "PicoKeys",
+  "foldername": "PicoKeys",
+  "schfilename": "PicoKeys.json",
+  "schfilemtime": 1655194732656
+}
