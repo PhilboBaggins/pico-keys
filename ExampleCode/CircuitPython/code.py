@@ -20,8 +20,8 @@ led.value = True
 kbd = Keyboard(usb_hid.devices)
 cc = ConsumerControl(usb_hid.devices)
 
-# list of pins to use (skipping GP15 on Pico because it's funky)
-pins = (
+# List of pins to use (
+pins = [
     board.GP0,
     board.GP1,
     board.GP2,
@@ -37,56 +37,50 @@ pins = (
     board.GP12,
     board.GP13,
     board.GP14,
-    board.GP16,
-    board.GP17,
-    board.GP18,
-    board.GP19,
-    board.GP20,
-    board.GP21,
-)
+    board.GP15,  # TODO: Perhaps I shouldn't have used this one because the Adaffruit USB keyboard example code said GPIO15 was "funky" on the RPi Pico
+]
 
 MEDIA = 1
 KEY = 2
 
 keymap = {
-    (0): (KEY, (Keycode.GUI, Keycode.C)),
-    (1): (KEY, (Keycode.GUI, Keycode.V)),
-    (2): (KEY, [Keycode.THREE]),
-    (3): (KEY, [Keycode.FOUR]),
-    (4): (KEY, [Keycode.FIVE]),
-    (5): (MEDIA, ConsumerControlCode.VOLUME_DECREMENT),
-    (6): (MEDIA, ConsumerControlCode.VOLUME_INCREMENT),
+    (0):  (KEY, (Keycode.CONTROL, Keycode.ALT, Keycode.DELETE)),
+    (1):  (KEY, (Keycode.CONTROL, Keycode.ALT, Keycode.DELETE)),
+    (2):  (MEDIA, ConsumerControlCode.VOLUME_DECREMENT),
+    (3):  (MEDIA, ConsumerControlCode.VOLUME_INCREMENT),
 
-    (7): (KEY, [Keycode.R]),
-    (8): (KEY, [Keycode.G]),
-    (9): (KEY, [Keycode.B]),
-    (10): (KEY, [Keycode.UP_ARROW]),
-    (11): (KEY, [Keycode.X]),  # plus key
-    (12): (KEY, [Keycode.Y]),
-    (13): (KEY, [Keycode.Z]),
+    (4):  (KEY, [Keycode.A]),
+    (5):  (KEY, [Keycode.B]),
+    (6):  (KEY, [Keycode.C]),
+    (7):  (KEY, [Keycode.D]),
 
-    (14): (KEY, [Keycode.I]),
-    (15): (KEY, [Keycode.O]),
-    (16): (KEY, [Keycode.LEFT_ARROW]),
-    (17): (KEY, [Keycode.DOWN_ARROW]),
-    (18): (KEY, [Keycode.RIGHT_ARROW]),
-    (19): (KEY, [Keycode.ALT]),
-    (20): (KEY, [Keycode.U]),
+    (8):  (KEY, [Keycode.E]),
+    (9):  (KEY, [Keycode.F]),
+    (10): (KEY, [Keycode.G]),
+    (11): (KEY, [Keycode.H]),
 
+    (12): (KEY, [Keycode.I]),
+    (13): (KEY, [Keycode.J]),
+    (14): (KEY, [Keycode.K]),
+    (15): (KEY, [Keycode.L]),
 }
 
-switches = []
-for i in range(len(pins)):
-    switch = DigitalInOut(pins[i])
-    switch.direction = Direction.INPUT
-    switch.pull = Pull.UP
-    switches.append(switch)
+switches = [
+     0,  1,  2,  3,
+     4,  5,  6,  7,
+     8,  9, 10, 11,
+    12, 13, 14, 15,
+]
 
+for i in range(len(switches)):
+    switches[i] = DigitalInOut(pins[i])
+    switches[i].direction = Direction.INPUT
+    switches[i].pull = Pull.UP
 
-switch_state = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+switch_state = [0] * 16
 
 while True:
-    for button in range(21):
+    for button in range(len(switches)):
         if switch_state[button] == 0:
             if not switches[button].value:
                 try:
@@ -103,9 +97,9 @@ while True:
                 try:
                     if keymap[button][0] == KEY:
                         kbd.release(*keymap[button][1])
-
                 except ValueError:
                     pass
                 switch_state[button] = 0
 
+    led.value = not led.value
     time.sleep(0.01)  # debounce
