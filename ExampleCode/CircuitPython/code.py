@@ -22,7 +22,7 @@ kbd = Keyboard(usb_hid.devices)
 cc = ConsumerControl(usb_hid.devices)
 layout = KeyboardLayoutUS(kbd)
 
-# List of pins to use (
+# List of pins to use:
 pins = [
     board.GP0,
     board.GP1,
@@ -78,19 +78,13 @@ keymap = {
     (15): (FUNC, lambda: layout.write('Hello world')),
 }
 
-switches = [
-     0,  1,  2,  3,
-     4,  5,  6,  7,
-     8,  9, 10, 11,
-    12, 13, 14, 15,
-]
+switches = [0] * 16
+switch_state = [0] * 16
 
 for i in range(len(switches)):
     switches[i] = DigitalInOut(pins[i])
     switches[i].direction = Direction.INPUT
     switches[i].pull = Pull.UP
-
-switch_state = [0] * 16
 
 while True:
     for button in range(len(switches)):
