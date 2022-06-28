@@ -13,7 +13,7 @@ from adafruit_hid.consumer_control import ConsumerControl
 from adafruit_hid.consumer_control_code import ConsumerControlCode
 from button_checker import ButtonChecker, PRESSED, RELEASED
 
-print("---Pico Pad Keyboard---")
+print("---Pico Keys---")
 
 led = DigitalInOut(board.LED)
 led.direction = Direction.OUTPUT
