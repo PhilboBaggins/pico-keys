@@ -18,6 +18,8 @@ print("---Pico Pad Keyboard---")
 led = DigitalInOut(board.LED)
 led.direction = Direction.OUTPUT
 led.value = True
+LED_BLINK_INTERVAL = 0.5
+ledBlinkTime = time.monotonic() + LED_BLINK_INTERVAL
 
 kbd = Keyboard(usb_hid.devices)
 cc = ConsumerControl(usb_hid.devices)
@@ -97,5 +99,9 @@ while True:
         except ValueError:  # deals with six key limit
             pass
 
-    led.value = not led.value  # TODO: Get LED flashing at a sensible rate... right now it blinks so fast that it just looks constantly on
+    now = time.monotonic()
+    if now > ledBlinkTime:
+        ledBlinkTime = now + LED_BLINK_INTERVAL
+        led.value = not led.value
+
     time.sleep(0.01)  # debounce
