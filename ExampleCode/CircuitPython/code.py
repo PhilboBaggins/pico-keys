@@ -4,13 +4,14 @@
 
 import time
 import board
-from digitalio import DigitalInOut, Direction, Pull
+from digitalio import DigitalInOut, Direction
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.consumer_control import ConsumerControl
 from adafruit_hid.consumer_control_code import ConsumerControlCode
+from button_checker import ButtonChecker, PRESSED, RELEASED
 
 print("---Pico Pad Keyboard---")
 
@@ -78,37 +79,23 @@ keymap = {
     (15): (FUNC, lambda: layout.write('Hello world')),
 }
 
-switches = [0] * 16
-switch_state = [0] * 16
-
-for i in range(len(switches)):
-    switches[i] = DigitalInOut(pins[i])
-    switches[i].direction = Direction.INPUT
-    switches[i].pull = Pull.UP
+buttonChecker = ButtonChecker(pins)
 
 while True:
-    for button in range(len(switches)):
-        if switch_state[button] == 0:
-            if not switches[button].value:
-                try:
-                    if keymap[button][0] == KEY:
-                        kbd.press(*keymap[button][1])
-                    elif keymap[button][0] == FUNC:
-                        keymap[button][1]()
-                    else:
-                        cc.send(keymap[button][1])
-                except ValueError:  # deals w six key limit
-                    pass
-                switch_state[button] = 1
-
-        if switch_state[button] == 1:
-            if switches[button].value:
-                try:
-                    if keymap[button][0] == KEY:
-                        kbd.release(*keymap[button][1])
-                except ValueError:
-                    pass
-                switch_state[button] = 0
+    for button, state in buttonChecker.check_all():
+        try:
+            if state == PRESSED:
+                if keymap[button][0] == KEY:
+                    kbd.press(*keymap[button][1])
+                elif keymap[button][0] == FUNC:
+                    keymap[button][1]()
+                else:
+                    cc.send(keymap[button][1])
+            elif state == RELEASED:
+                if keymap[button][0] == KEY:
+                    kbd.release(*keymap[button][1])
+        except ValueError:  # deals with six key limit
+            pass
 
     led.value = not led.value  # TODO: Get LED flashing at a sensible rate... right now it blinks so fast that it just looks constantly on
     time.sleep(0.01)  # debounce
