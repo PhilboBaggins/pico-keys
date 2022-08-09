@@ -4,7 +4,7 @@
   "name": "PicoKeys",
   "content": "",
   "created_at": "2022-06-14 17:11:07",
-  "updated_at": "2022-06-14 18:18:52",
+  "updated_at": "2022-08-10 00:02:35",
   "stick": "",
   "documents": [
     {
@@ -12,11 +12,11 @@
       "title": "Sheet_1",
       "description": "",
       "docType": "1",
-      "master": "40dd4b40117368097b7f949ac5f925f4",
+      "master": "",
       "thumb": "/images/thumb-default.png",
       "components": {
         "5f9451a0a0ba472ebbafe110fd9b3732": 1,
-        "aa5a9ff6351c4442a32cb82ba932498c": 16
+        "e3fb862641c24d10a9523523d4276117": 12
       },
       "BOM": [
         [
@@ -39,21 +39,21 @@
         ],
         [
           "MX1A-E1NW",
-          16,
+          12,
           "SW_MX1A-E1NW_CHY",
-          "SW1,SW2,SW3,SW4,SW5,SW6,SW7,SW8,SW9,SW10,SW11,SW12,SW13,SW14,SW15,SW16",
+          "SW1,SW2,SW3,SW4,SW5,SW6,SW7,SW8,SW9,SW10,SW11,SW12",
           {
             "BOM_Manufacturer Part": "",
-            "puuid": "aa2ab5737fca41648aab077ad05859fe",
-            "uuid": "aa5a9ff6351c4442a32cb82ba932498c"
+            "puuid": "d2ec14968d9344198d0bcb17d11dcce2",
+            "uuid": "e3fb862641c24d10a9523523d4276117"
           }
         ]
       ],
-      "updateTime": 1655194732,
+      "updateTime": 1656537199,
       "createTime": 1655190668,
       "histories": [],
       "created_at": "2022-06-14 17:11:08",
-      "updated_at": "2022-06-14 18:18:52"
+      "updated_at": "2022-06-30 07:13:19"
     },
     {
       "uuid": "c2bda9d38c3767481fa7e834b8c45a3c",
@@ -66,19 +66,19 @@
       "thumb": "/images/thumb-default.png",
       "components": {
         "41ff9244bce146a6a6dcd79c79d59a1f": 1,
-        "aa2ab5737fca41648aab077ad05859fe": 16
+        "d2ec14968d9344198d0bcb17d11dcce2": 12
       },
       "BOM": [],
-      "updateTime": 1655194354,
+      "updateTime": 1660053755,
       "createTime": 1655191601,
       "histories": [],
       "created_at": "2022-06-14 17:26:41",
-      "updated_at": "2022-06-14 18:12:34"
+      "updated_at": "2022-08-10 00:02:35"
     }
   ],
   "sort": [],
   "title": "PicoKeys",
   "foldername": "PicoKeys",
   "schfilename": "PicoKeys.json",
-  "schfilemtime": 1655194732656
+  "schfilemtime": 1656537199116
 }
