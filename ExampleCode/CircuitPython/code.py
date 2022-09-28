@@ -12,6 +12,7 @@ from adafruit_hid.keycode import Keycode
 from adafruit_hid.consumer_control import ConsumerControl
 from adafruit_hid.consumer_control_code import ConsumerControlCode
 from button_checker import ButtonChecker, PRESSED, RELEASED
+from pin_map import pins
 
 print("---Pico Keys---")
 
@@ -24,26 +25,6 @@ ledBlinkTime = time.monotonic() + LED_BLINK_INTERVAL
 kbd = Keyboard(usb_hid.devices)
 cc = ConsumerControl(usb_hid.devices)
 layout = KeyboardLayoutUS(kbd)
-
-# List of pins to use:
-pins = [
-    board.GP0,
-    board.GP1,
-    board.GP2,
-    board.GP3,
-    board.GP4,
-    board.GP5,
-    board.GP6,
-    board.GP7,
-    board.GP8,
-    board.GP9,
-    board.GP10,
-    board.GP11,
-    board.GP12,
-    board.GP13,
-    board.GP14,
-    board.GP15,  # TODO: Perhaps I shouldn't have used this one because the Adaffruit USB keyboard example code said GPIO15 was "funky" on the RPi Pico
-]
 
 MEDIA = 1
 KEY = 2
@@ -75,6 +56,7 @@ keymap = {
     (10): (KEY, [Keycode.G]),
     (11): (KEY, [Keycode.H]),
 
+    # Mot available on v2.x boards (keymap below will be ignored)
     (12): (FUNC, lambda: layout.write('Hello world')),
     (13): (FUNC, lambda: layout.write('Hello world')),
     (14): (FUNC, lambda: layout.write('Hello world')),
