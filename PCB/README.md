@@ -1,4 +1,4 @@
-Pico Keys
+Pico key switches
 =========
 
 A small macro keyboard using a [RPi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/).
@@ -9,6 +9,34 @@ A small macro keyboard using a [RPi Pico](https://www.raspberrypi.com/products/r
 | ![./Exports-v1.0/Bottom.svg](./Exports-v1.0/Bottom.svg)       | ![./Exports-v2.0/Bottom.svg](./Exports-v2.0/Bottom.svg)       |
 | ![./Exports-v1.0/Schematic.png](./Exports-v1.0/Schematic.png) | ![./Exports-v2.0/Schematic.png](./Exports-v2.0/Schematic.png) |
 
+Components
+----------
+
+The standard RPi Pico:
+
+* Official website: https://www.raspberrypi.com/products/raspberry-pi-pico/
+* DigiKey: https://www.digikey.com/en/products/detail/raspberry-pi/SC0915/13624793
+
+Version 2.x board require 2 sets of 1x20 0.1" male headers to mount the RPi Pico. On version 1.x boards, the RPi Pico can be mounted on headers or just soldered down surfce mount style.
+
+Any of the following key switches will work:
+
+* Any Cherry MX key switches without LEDs
+* TODO: Check if [Akko CS](https://www.pccasegear.com/products/58938/akko-cs-crystal-blue-switches-45-pack) key switches work
+* TODO: Check if [Akko POM](https://www.pccasegear.com/products/58934/akko-pom-brown-switches-45-pack) key switches work
+* TODO: Check if [Akko x TTC Demon](https://www.pccasegear.com/products/55511/akko-x-ttc-demon-switches-10-pack) key switches work
+* TODO: Check if [Gateron MX](https://www.pccasegear.com/products/47910/gateron-mx-switches-blue-120-pack) key switches work
+* TODO: Check if [Glorious Forge Fox](https://www.pccasegear.com/products/58769/glorious-forge-fox-switches-120-pack-lubed) key switches work
+* TODO: Check if [Glorious Lynx](https://www.pccasegear.com/products/55150/glorious-lynx-switches-36-pack) key switches work
+* TODO: Check if [Glorious Panda](https://www.pccasegear.com/products/51561/glorious-panda-switches-36-pack) key switches work
+* TODO: Check if [Kailh Box Black](https://www.pccasegear.com/products/51695/kailh-box-black-switches-120-pack) key switches work
+* TODO: Check if [Kailh Speed Bronze](https://www.pccasegear.com/products/51696/kailh-speed-bronze-switches-120-pack) key switches work
+* TODO: Check if [Mountain Linear Speed](https://www.pccasegear.com/products/57926/mountain-linear-speed-switches-110-pack-lubed) key switches work
+
+Optional: Caps for keyswitches - TODO: Provide some examples
+
+Optional: Stick on padded bumpers (e.g. https://www.digikey.com/en/products/filter/bumpers-feet-pads-grips/570)
+
 Assembly insturctions
 ---------------------
 
@@ -17,7 +45,7 @@ For v1.x boards:
 1. Solder key switches and RPi Pico in any order
 2. Clean flux
 3. Press on key caps (optional)
-4. Add stick on rubber pads to bottom of board (optional)
+4. Add stick on padded bumpers to bottom of board (optional)
 
 For v2.x boards, the order things are soldered is a bit more important because of the way the RPi Pico and key switches overlap:
 
@@ -30,7 +58,7 @@ For v2.x boards, the order things are soldered is a bit more important because o
 6. Clean flux
 7. Trim the the 0.1" male headers poking through the RPi Pico
 8. Press on key caps (optional)
-9. Add stand-offs or stick on rubber pads to bottom of board (optional)
+9. Add stand-offs or stick on padded bumpers to bottom of board (optional)
 
 Licence
 -------
