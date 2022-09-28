@@ -3,12 +3,12 @@ Pico key switches
 
 A small macro keyboard using a [RPi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/).
 
-| Version 1.0                                                   | Version 2.0                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- |
-| ![./Exports-v1.0/Top.svg](./Exports-v1.0/Top.svg)             | ![./Exports-v2.0/Top.svg](./Exports-v2.0/Top.svg)             |
-| ![./Exports-v1.0/Bottom.svg](./Exports-v1.0/Bottom.svg)       | ![./Exports-v2.0/Bottom.svg](./Exports-v2.0/Bottom.svg)       |
-| ![./Exports-v1.0/Schematic.png](./Exports-v1.0/Schematic.png) | ![./Exports-v2.0/Schematic.png](./Exports-v2.0/Schematic.png) |
-| ![../photo-v1.0.jpg](../photo-v1.0.jpg) |  |
+| Version 1.0                                               | Version 2.0                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- |
+| ![Top of v1.0 board](./Exports-v1.0/Top.svg)              | ![Top of v2.0 board](./Exports-v2.0/Top.svg)              |
+| ![Bottom of v1.0 board](./Exports-v1.0/Bottom.svg)        | ![Bottom of v2.0 board](./Exports-v2.0/Bottom.svg)        |
+| ![Schematic for v1.0 board](./Exports-v1.0/Schematic.png) | ![Schematic for v2.0 board](./Exports-v2.0/Schematic.png) |
+| ![Photo of assembled v1.0 board](../photo-v1.0.jpg)       |                                                           |
 
 Components
 ----------
