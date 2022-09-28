@@ -3,9 +3,11 @@ Pico Keys
 
 A small macro keyboard using a [RPi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/).
 
-![./Exports-v1.0/Top.svg](./Exports-v1.0/Top.svg)
-![./Exports-v1.0/Bottom.svg](./Exports-v1.0/Bottom.svg)
-![./Exports-v1.0/Schematic.png](./Exports-v1.0/Schematic.png)
+| Version 1.0                                                   | Version 2.0                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- |
+| ![./Exports-v1.0/Top.svg](./Exports-v1.0/Top.svg)             | ![./Exports-v2.0/Top.svg](./Exports-v2.0/Top.svg)             |
+| ![./Exports-v1.0/Bottom.svg](./Exports-v1.0/Bottom.svg)       | ![./Exports-v2.0/Bottom.svg](./Exports-v2.0/Bottom.svg)       |
+| ![./Exports-v1.0/Schematic.png](./Exports-v1.0/Schematic.png) | ![./Exports-v2.0/Schematic.png](./Exports-v2.0/Schematic.png) |
 
 Licence
 -------
