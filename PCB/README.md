@@ -8,7 +8,7 @@ A small macro keyboard using a [RPi Pico](https://www.raspberrypi.com/products/r
 | ![Top of v1.0 board](./Exports-v1.0/Top.svg)              | ![Top of v2.0 board](./Exports-v2.0/Top.svg)              |
 | ![Bottom of v1.0 board](./Exports-v1.0/Bottom.svg)        | ![Bottom of v2.0 board](./Exports-v2.0/Bottom.svg)        |
 | ![Schematic for v1.0 board](./Exports-v1.0/Schematic.png) | ![Schematic for v2.0 board](./Exports-v2.0/Schematic.png) |
-| ![Photo of assembled v1.0 board](../photo-v1.0.jpg)       |                                                           |
+| ![Photo of assembled v1.0 board](../photo-v1.0.jpg)       | ![Photo of assembled v2.0 board](../photo-v2.0.jpg)       |
 
 Components
 ----------
