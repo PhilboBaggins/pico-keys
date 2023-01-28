@@ -38,7 +38,7 @@ Optional: Caps for keyswitches - TODO: Provide some examples
 
 Optional: Stick on padded bumpers (e.g. https://www.digikey.com/en/products/filter/bumpers-feet-pads-grips/570)
 
-Assembly insturctions
+Assembly instructions
 ---------------------
 
 For v1.x boards:
