@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Initialise pico_sdk from installed location
 # (note this can come from environment, CMake cache etc)
-set(PICO_SDK_PATH "C:/Users/Phil/Documents/Pico/pico-sdk")
+#set(PICO_SDK_PATH "path/to/Pico/pico-sdk")
 
 set(PICO_BOARD pico CACHE STRING "Board type")
 
@@ -25,7 +25,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(PicoKeysExample PicoKeysExample.c )
+add_executable(PicoKeysExample PicoKeysExample.c)
 
 pico_set_program_name(PicoKeysExample "PicoKeysExample")
 pico_set_program_version(PicoKeysExample "0.1")
@@ -48,4 +48,3 @@ target_link_libraries(PicoKeysExample
         )
 
 pico_add_extra_outputs(PicoKeysExample)
-
