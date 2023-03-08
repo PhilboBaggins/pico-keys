@@ -25,7 +25,11 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(PicoKeysExample PicoKeysExample.c)
+add_executable(PicoKeysExample
+    PicoKeysExample.c
+    usb_descriptors.c
+    buttons.c
+)
 
 pico_set_program_name(PicoKeysExample "PicoKeysExample")
 pico_set_program_version(PicoKeysExample "0.1")
@@ -45,6 +49,8 @@ target_include_directories(PicoKeysExample PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(PicoKeysExample
-        )
+    tinyusb_device
+    tinyusb_board
+)
 
 pico_add_extra_outputs(PicoKeysExample)
