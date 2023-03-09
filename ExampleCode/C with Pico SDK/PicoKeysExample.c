@@ -10,6 +10,7 @@
 #include "hardware/uart.h"
 
 #include "usb_descriptors.h"
+#include "buttons.h"
 
 //--------------------------------------------------------------------+
 // MACRO CONSTANT TYPEDEF PROTYPES
@@ -28,6 +29,17 @@ enum  {
 
 static uint32_t blink_interval_ms = BLINK_NOT_MOUNTED;
 
+// Map buttons to key codes - These will be send when the button is pressed
+uint8_t BUTTON_KEY_MAP[NUM_BUTTONS] = {
+    HID_KEY_A, HID_KEY_B, HID_KEY_C,
+    HID_KEY_D, HID_KEY_E, HID_KEY_F,
+    HID_KEY_G, HID_KEY_H, HID_KEY_I,
+    HID_KEY_J, HID_KEY_K, HID_KEY_L,
+#if BOAD_MAJOR_VERSION == 1
+    HID_KEY_M, HID_KEY_N, HID_KEY_O,
+#endif
+};
+
 void led_blinking_task(void);
 void hid_task(void);
 void cdc_task(void);
@@ -39,6 +51,7 @@ int main(void)
 {
     board_init();
     tusb_init();
+    buttons_init();
 
     while (true)
     {
@@ -87,6 +100,25 @@ void tud_resume_cb(void)
 // USB HID
 //--------------------------------------------------------------------+
 
+#define NUM_SIMULTANEOUS_USB_KEY_CODES 6
+
+bool addKey(uint8_t existingKeycodes[NUM_SIMULTANEOUS_USB_KEY_CODES], uint8_t newKeyCode)
+{
+    // USB HID allows for 6 keys pressed at one time. So effectively there are 6 slots we could put out key code into
+    // Go through each slot, check if it's empty and if so, put our key code in
+    for (int idx = 0; idx < NUM_SIMULTANEOUS_USB_KEY_CODES; idx++)
+    {
+        if (existingKeycodes[idx] == 0)
+        {
+            existingKeycodes[idx] = newKeyCode;
+            return true;
+        }
+    }
+
+    // All slots full so could not add this new keycode
+    return false;
+}
+
 // Every 10ms, we will sent 1 report for each HID profile (keyboard, mouse etc ..)
 // tud_hid_report_complete_cb() is used to send the next report after previous one is complete
 void hid_task(void)
@@ -99,9 +131,46 @@ void hid_task(void)
         return; // not enough time
     start_ms += interval_ms;
 
+    static uint8_t prevSentKeycodes[6] = { 0 };
+    uint8_t keycodes[6] = { 0 };
 
-    // TODO: CHeck buttons here
+    // Check each button
+    for (int buttonIdx = 0; buttonIdx < NUM_BUTTONS; buttonIdx++)
+    {
+        enum BUTTON_STATE state = buttonRead(buttonIdx);
 
+        switch (state)
+        {
+            case BUTTON_NOT_PRESSED:
+                break;
+            case BUTTON_PRESSED:
+                addKey(keycodes, BUTTON_KEY_MAP[buttonIdx]);
+                break;
+            case BUTTON_HELD_PRESSED:
+                addKey(keycodes, BUTTON_KEY_MAP[buttonIdx]);
+                break;
+            case BUTTON_RELEASED:
+                break;
+            default:
+                break;
+        }
+    }
+
+    // Check if any new key codes need to be send
+    bool newKeysToSend = false;
+    for (int idx = 0; idx < NUM_SIMULTANEOUS_USB_KEY_CODES; idx++)
+    {
+        if (keycodes[idx] != prevSentKeycodes[idx])
+        {
+            newKeysToSend = true;
+            prevSentKeycodes[idx] = keycodes[idx];
+        }
+    }
+
+    if (newKeysToSend)
+    {
+        tud_hid_keyboard_report(REPORT_ID_KEYBOARD, 0, keycodes);
+    }
 }
 
 // Invoked when sent REPORT successfully to host
