@@ -1,6 +1,8 @@
 # PicoKeys example using RPi Pico C SDK
 
-TODO: Add description .... what is this for... where will it be used
+Example code for use on a PicoKeys board using the Raspberry Pi Pico's C/C++ SDK.
+
+The Pico becomes at USB HID device that sends keyboard key presses when PicoKeys buttons are pressed.
 
 ## Building
 
