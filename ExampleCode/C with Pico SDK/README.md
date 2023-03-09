@@ -21,12 +21,3 @@ TODO: Add description .... what is this for... where will it be used
     #cmake -DCMAKE_BUILD_TYPE=Debug -G "NMake Makefiles" ..
     cmake -G "NMake Makefiles" ..
     nmake
-
-### Building on Windows with MinGW
-
-    set PICO_SDK_PATH="C:/path/to/pico-sdk"
-    mkdir build
-    cd build
-    #cmake -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" ..
-    cmake -G "MinGW Makefiles" ..
-    mingw32-make
