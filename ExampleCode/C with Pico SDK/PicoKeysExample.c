@@ -14,10 +14,10 @@
 // Map buttons to key codes - These will be send when the button is pressed
 uint8_t BUTTON_KEY_MAP[NUM_BUTTONS] =
 {
-    HID_KEY_A, HID_KEY_B, HID_KEY_C,
-    HID_KEY_D, HID_KEY_E, HID_KEY_F,
-    HID_KEY_G, HID_KEY_H, HID_KEY_I,
-    HID_KEY_J, HID_KEY_K, HID_KEY_L,
+    HID_KEY_F21, HID_KEY_B, HID_KEY_C,
+    HID_KEY_F22, HID_KEY_E, HID_KEY_F,
+    HID_KEY_F23, HID_KEY_H, HID_KEY_I,
+    HID_KEY_F24, HID_KEY_K, HID_KEY_L,
 #if BOAD_MAJOR_VERSION == 1
     HID_KEY_M, HID_KEY_N, HID_KEY_O,
 #endif
@@ -103,7 +103,6 @@ void hid_task(void)
     // Poll every 10ms
     const uint32_t interval_ms = 10;
     static uint32_t start_ms = 0;
-
     if (board_millis() - start_ms < interval_ms)
         return; // not enough time
     start_ms += interval_ms;
@@ -153,7 +152,7 @@ void hid_task(void)
 // Invoked when sent REPORT successfully to host
 // Application can use this to send the next report
 // Note: For composite reports, report[0] is report ID
-void tud_hid_report_complete_cb(uint8_t instance, uint8_t const *report, uint8_t len)
+void tud_hid_report_complete_cb(uint8_t instance, uint8_t const* report, uint8_t len)
 {
     (void)instance;
     (void)len;
@@ -162,7 +161,7 @@ void tud_hid_report_complete_cb(uint8_t instance, uint8_t const *report, uint8_t
 // Invoked when received GET_REPORT control request
 // Application must fill buffer report's content and return its length.
 // Return zero will cause the stack to STALL request
-uint16_t tud_hid_get_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t report_type, uint8_t *buffer, uint16_t reqlen)
+uint16_t tud_hid_get_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t report_type, uint8_t* buffer, uint16_t reqlen)
 {
     (void)instance;
     (void)report_id;
@@ -174,7 +173,7 @@ uint16_t tud_hid_get_report_cb(uint8_t instance, uint8_t report_id, hid_report_t
 }
 
 // Invoked when received SET_REPORT control request or received data on OUT endpoint ( Report ID = 0, Type = 0 )
-void tud_hid_set_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t report_type, uint8_t const *buffer, uint16_t bufsize)
+void tud_hid_set_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t report_type, uint8_t const* buffer, uint16_t bufsize)
 {
     (void)instance;
     (void)report_id;
