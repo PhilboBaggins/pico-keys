@@ -20,6 +20,6 @@ The Pico becomes at USB HID device that sends keyboard key presses when PicoKeys
     set PICO_SDK_PATH="C:/path/to/pico-sdk"
     mkdir build
     cd build
-    #cmake -DCMAKE_BUILD_TYPE=Debug -G "NMake Makefiles" ..
+    #cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Debug  ..
     cmake -G "NMake Makefiles" ..
     nmake

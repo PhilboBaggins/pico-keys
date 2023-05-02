@@ -1,5 +1,5 @@
-Pico key switches
-=========
+PicoKey PCB
+===========
 
 A small macro keyboard using a [RPi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/).
 
@@ -15,10 +15,10 @@ Components
 
 The standard RPi Pico:
 
-* Official website: https://www.raspberrypi.com/products/raspberry-pi-pico/
-* DigiKey: https://www.digikey.com/en/products/detail/raspberry-pi/SC0915/13624793
+* Official website: <https://www.raspberrypi.com/products/raspberry-pi-pico/>
+* DigiKey: <https://www.digikey.com/en/products/detail/raspberry-pi/SC0915/13624793>
 
-Version 2.x board require 2 sets of 1x20 0.1" male headers to mount the RPi Pico. On version 1.x boards, the RPi Pico can be mounted on headers or just soldered down surfce mount style.
+Version 2.x board require 2 sets of 1x20 0.1" male headers to mount the RPi Pico. On version 1.x boards, the RPi Pico can be mounted on headers or just soldered down surface mount style.
 
 Any of the following key switches will work:
 
@@ -34,9 +34,9 @@ Any of the following key switches will work:
 * TODO: Check if [Kailh Speed Bronze](https://www.pccasegear.com/products/51696/kailh-speed-bronze-switches-120-pack) key switches work
 * TODO: Check if [Mountain Linear Speed](https://www.pccasegear.com/products/57926/mountain-linear-speed-switches-110-pack-lubed) key switches work
 
-Optional: Caps for keyswitches - TODO: Provide some examples
+Optional: Caps for key switches - TODO: Provide some examples
 
-Optional: Stick on padded bumpers (e.g. https://www.digikey.com/en/products/filter/bumpers-feet-pads-grips/570)
+Optional: Stick on padded bumpers (e.g. <https://www.digikey.com/en/products/filter/bumpers-feet-pads-grips/570>)
 
 Assembly instructions
 ---------------------
@@ -68,4 +68,4 @@ Copyright © 2022 Phil Baldwin
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
 
-You should have received a copy of the license along with this work. If not, see http://creativecommons.org/licenses/by-sa/4.0/.
+You should have received a copy of the license along with this work. If not, see <http://creativecommons.org/licenses/by-sa/4.0/>.

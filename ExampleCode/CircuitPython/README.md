@@ -3,8 +3,6 @@ PicoKeys CircuitPython example program
 
 Example program for using the PicoKeys board with [CircuitPython](https://circuitpython.org/) 7.x, based on the code from Adafruit's [DIY Pico Mechanical Keyboard with Fritzing and CircuitPython](https://learn.adafruit.com/diy-pico-mechanical-keyboard-with-fritzing-circuitpython/code-the-pico-keyboard) project.
 
-
-
 Installation instructions
 -------------------------
 
@@ -19,8 +17,6 @@ Installation instructions
     * NOTE: This will replace the current code.py, as well as the lib folder and its contents. Back up any desired code before copying these files!
 3. Unplug the RPi Pico from your computer and then plug it back in
    * The CIRCUITPY drive will show up again but you can just close and ignore it now
-
-
 
 Copyright and licence info
 --------------------------
