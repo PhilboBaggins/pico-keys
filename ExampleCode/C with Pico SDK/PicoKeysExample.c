@@ -55,8 +55,6 @@ int main(void)
 
     while (true)
     {
-        sleep_ms(1000);
-
         tud_task(); // tinyusb device task
         led_blinking_task();
         hid_task();
