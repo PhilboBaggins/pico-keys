@@ -1,16 +1,15 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "bsp/board.h"
+#include "hardware/uart.h"
+#include "pico/stdlib.h"
 #include "tusb.h"
 
-#include "pico/stdlib.h"
-#include "hardware/uart.h"
-
-#include "usb_descriptors.h"
 #include "buttons.h"
+#include "usb_descriptors.h"
 
 //--------------------------------------------------------------------+
 // MACRO CONSTANT TYPEDEF PROTYPES
@@ -31,7 +30,8 @@ enum
 static uint32_t blink_interval_ms = BLINK_NOT_MOUNTED;
 
 // Map buttons to key codes - These will be send when the button is pressed
-uint8_t BUTTON_KEY_MAP[NUM_BUTTONS] = {
+uint8_t BUTTON_KEY_MAP[NUM_BUTTONS] =
+{
     HID_KEY_A, HID_KEY_B, HID_KEY_C,
     HID_KEY_D, HID_KEY_E, HID_KEY_F,
     HID_KEY_G, HID_KEY_H, HID_KEY_I,
@@ -43,7 +43,6 @@ uint8_t BUTTON_KEY_MAP[NUM_BUTTONS] = {
 
 void led_blinking_task(void);
 void hid_task(void);
-void cdc_task(void);
 
 //--------------------------------------------------------------------+
 // Main
@@ -120,8 +119,8 @@ bool addKey(uint8_t existingKeycodes[NUM_SIMULTANEOUS_USB_KEY_CODES], uint8_t ne
     return false;
 }
 
-// Every 10ms, we will sent 1 report for each HID profile (keyboard, mouse etc ..)
-// tud_hid_report_complete_cb() is used to send the next report after previous one is complete
+// Every 10ms, check all buttons and send a keyboard report
+// for any button (up tp 6 total) that are pressed or held 
 void hid_task(void)
 {
     // Poll every 10ms
@@ -188,7 +187,6 @@ void tud_hid_report_complete_cb(uint8_t instance, uint8_t const *report, uint8_t
 // Return zero will cause the stack to STALL request
 uint16_t tud_hid_get_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t report_type, uint8_t *buffer, uint16_t reqlen)
 {
-    // TODO not Implemented
     (void)instance;
     (void)report_id;
     (void)report_type;
