@@ -33,12 +33,19 @@ FUNC = 3
 def loginSequence():
     layout.write('!!!!! USERNAME HERE !!!!!')
     time.sleep(0.1)  # Seconds
+
     kbd.press(Keycode.TAB)
     time.sleep(0.1)  # Seconds
+    kbd.release(Keycode.TAB)
+    time.sleep(0.1)  # Seconds
+
     layout.write('!!!!! PASSWORD HERE !!!!!')
     time.sleep(0.1)  # Seconds
+
     kbd.press(Keycode.ENTER)
-    # TODO: Do I need the time.sleep calls?
+    time.sleep(0.1)  # Seconds
+    kbd.release(Keycode.ENTER)
+    time.sleep(0.1)  # Seconds
 
 keymap = {
     (0):  (KEY, (Keycode.CONTROL, Keycode.ALT, Keycode.DELETE)),
