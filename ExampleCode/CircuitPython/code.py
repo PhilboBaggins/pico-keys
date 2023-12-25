@@ -82,7 +82,7 @@ while True:
                     kbd.press(*actionArgs)
                 elif actionType == FUNC:
                     actionArgs()
-                else:
+                elif actionType == MEDIA:
                     cc.send(actionArgs)
             elif state == RELEASED:
                 if actionType == KEY:
