@@ -75,16 +75,18 @@ buttonChecker = ButtonChecker(pins)
 while True:
     for button, state in buttonChecker.check_all():
         try:
+            actionType = keymap[button][0]
+            actionArgs = keymap[button][1]
             if state == PRESSED:
-                if keymap[button][0] == KEY:
-                    kbd.press(*keymap[button][1])
-                elif keymap[button][0] == FUNC:
-                    keymap[button][1]()
+                if actionType == KEY:
+                    kbd.press(*actionArgs)
+                elif actionType == FUNC:
+                    actionArgs()
                 else:
-                    cc.send(keymap[button][1])
+                    cc.send(actionArgs)
             elif state == RELEASED:
-                if keymap[button][0] == KEY:
-                    kbd.release(*keymap[button][1])
+                if actionType == KEY:
+                    kbd.release(*actionArgs)
         except ValueError:  # deals with six key limit
             pass
 
